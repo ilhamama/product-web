@@ -10,6 +10,8 @@ export class ProductComponent {
   currentPage = 1;
   totalPages = 0;
   pages: number[] = [];
+  newProduct: any = {};
+  displayStyle = "none";
 
   constructor() {}
 
@@ -33,6 +35,15 @@ export class ProductComponent {
       this.getProducts();
     }
   }
+
+  openModal(): void {
+    this.displayStyle = "block";
+  }
+
+  closeModal(): void {
+    this.displayStyle = "none";
+  }
+
 }
 
 interface Product {

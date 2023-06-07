@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Product List</h2>
 
-  <button class="btn btn-primary" style="float: right;margin-block: 10px;">Create Product</button>
+  <button class="btn btn-primary" style="float: right;margin-block: 10px;" (click)="openModal()">Create Product</button>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -15,7 +15,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let product of products">
-        <td>{{ product.code }}</td>
+        <td (click)="openModal()">{{ product.code }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.category }}</td>
         <td>{{ product.brand }}</td>
@@ -50,4 +50,48 @@
       </a>
     </li>
   </ul>
+</div>
+
+<!-- Create Product Modal -->
+<div class="modal" [ngStyle]="{display: displayStyle}" id="createProductModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Create Product</h4>
+        <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="productCode">Code:</label>
+          <input type="text" class="form-control" id="productCode" required="true">
+        </div>
+        <div class="form-group">
+          <label for="productName">Name:</label>
+          <input type="text" class="form-control" id="productName" required="true">
+        </div>
+        <div class="form-group">
+          <label for="productCategory">Category:</label>
+          <input type="text" class="form-control" id="productCategory" required="true">
+        </div>
+        <div class="form-group">
+          <label for="productBrand">Brand:</label>
+          <input type="text" class="form-control" id="productBrand">
+        </div>
+        <div class="form-group">
+          <label for="productType">Type:</label>
+          <input type="text" class="form-control" id="productType">
+        </div>
+        <div class="form-group">
+          <label for="productDescription">Description:</label>
+          <textarea class="form-control" id="productDescription"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="closeModal()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="closeModal()">Create</button>
+      </div>
+    </div>
+  </div>
 </div>
