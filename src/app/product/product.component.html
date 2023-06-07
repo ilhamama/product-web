@@ -1,0 +1,53 @@
+<div class="container">
+  <h2>Product List</h2>
+
+  <button class="btn btn-primary" style="float: right;margin-block: 10px;">Create Product</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Brand</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.code }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.brand }}</td>
+        <td>{{ product.type }}</td>
+        <td>{{ product.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul class="pagination" style="display: flex;justify-content: center;">
+    <li [class.disabled]="currentPage === 1">
+      <a (click)="changePage(1)" aria-label="First">
+        <span aria-hidden="true">First</span>
+      </a>
+    </li>
+    <li [class.disabled]="currentPage === 1">
+      <a (click)="changePage(currentPage - 1)" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li *ngFor="let page of pages" [class.active]="currentPage === page">
+      <a (click)="changePage(page)">{{ page }}</a>
+    </li>
+    <li [class.disabled]="currentPage === totalPages">
+      <a (click)="changePage(currentPage + 1)" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    <li [class.disabled]="currentPage === totalPages">
+      <a (click)="changePage(totalPages)" aria-label="Last">
+        <span aria-hidden="true">Last</span>
+      </a>
+    </li>
+  </ul>
+</div>
